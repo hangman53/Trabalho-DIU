@@ -1,0 +1,60 @@
+    body {
+        background-image: url("./imagens/fundo.jpg");
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+    }
+
+    .login {
+        background-color: white;
+        width: 340px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        display: grid;
+        gap: 16px;
+        margin: 10px;
+    }
+
+    form {
+        display: grid;
+        gap: 8px;
+    }
+
+    h2 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        text-align: center;
+
+    }
+
+    .login form input {
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 15px;
+        border: 1px solid #ccc;
+        outline: none;
+    }
+
+    .login form input[type="submit"] {
+        background-color: #16402B;
+        color: #fff;
+        font-size: 16px;
+        border: 15px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+    }
+
+    a {
+        font-size: 12px;
+        text-align: center;
+        text-decoration: none;
+        color: #333;
+    }
