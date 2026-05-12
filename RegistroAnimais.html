@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Animais</title>
+    <link rel="stylesheet" href="RegistroAnimais.css">
+</head>
+
+<body>
+    <div id="BarraLateral">
+        <h1>Nome do site</h1>
+        <nav>
+            <ul>
+                <li><img src="./imagens/—Pngtree—white house architecture design_4754661.png" alt=" simbolo home"><a
+                        href="index.html">Inicio</a></li>
+                <li><a href="Animais.html">Animais</a></li>
+                <li><a href="PesagemLeite.html">Pesagem de Leite</a></li>
+                <li><a href="Reproducao.html">Reprodução</a></li>
+                <li><a href="Medicacao.html">Medicação</a></li>
+            </ul>
+        </nav>
+    </div>
+    <main>
+        <h1>Registro de Animais</h1>
+        <form action="processar_registro.php" method="post">
+            <label for="nome">Numero:</label>
+            <input type="number" id="numero">
+
+            <label for="especie">Nome do Pai:</label>
+            <input type="text" id="NomePai">
+
+            <label for="idade">Data do Nascimento:</label>
+            <input type="date" id="DataNasc">
+            <section id="botoes">
+                <button type="reset" id="cancelar">Cancelar</button>
+                <button type="submit" id="salvar">Registrar</button>
+            </section>
+        </form>
+    </main>
+
+</body>
+
+</html>
