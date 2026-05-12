@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Animais</title>
-    <link rel="stylesheet" href="RegistroAnimais.css">
+    <title>Cadastro de pesagem de leite</title>
+    <link rel="stylesheet" href="RegistroPesagens.css">
 </head>
 
 <body>
@@ -22,16 +22,16 @@
         </nav>
     </div>
     <main>
-        <h1>Registro de Animais</h1>
+        <h1>Cadastro de pesagem de leite</h1>
         <form action="processar_registro.php" method="post">
-            <label for="nome">Numero</label>
+            <label for="nome">Numero do Animal</label>
             <input type="number" id="numero">
                 
-            <label for="especie">Nome do Pai</label>
+            <label for="especie">Quantidade</label>
             <input type="text" id="NomePai">
 
-            <label for="idade">Data de Nascimento</label>
-            <input type="date" id="DataNasc">
+            <label for="idade">Data da pesagem</label>
+            <input type="date" id="DataPesagem">
             <section id="botoes">
                 <button type="reset" id="cancelar">Cancelar</button>
                 <button type="submit" id="salvar">Salvar</button>

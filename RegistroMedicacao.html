@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Animais</title>
-    <link rel="stylesheet" href="RegistroAnimais.css">
+    <title>Cadastro de medicação</title>
+    <link rel="stylesheet" href="RegistroMedicacao.css">
 </head>
 
 <body>
@@ -22,16 +22,19 @@
         </nav>
     </div>
     <main>
-        <h1>Registro de Animais</h1>
+        <h1>Cadastro de medicação</h1>
         <form action="processar_registro.php" method="post">
-            <label for="nome">Numero</label>
+            <label for="nome">Numero do Animal</label>
             <input type="number" id="numero">
                 
-            <label for="especie">Nome do Pai</label>
+            <label for="especie">Medicação</label>
             <input type="text" id="NomePai">
 
-            <label for="idade">Data de Nascimento</label>
-            <input type="date" id="DataNasc">
+            <label for="idade">Data da aplicação</label>
+            <input type="date" id="DataAplicacao">
+
+            <label for="idade">Carência</label>
+            <input type="text" id="carencia">
             <section id="botoes">
                 <button type="reset" id="cancelar">Cancelar</button>
                 <button type="submit" id="salvar">Salvar</button>
