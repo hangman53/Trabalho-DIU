@@ -72,6 +72,8 @@ main input {
     border: none;
     height: 40px;
     width: 1165px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 
 main h1 {
