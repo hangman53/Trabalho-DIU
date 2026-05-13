@@ -40,13 +40,8 @@ botoesEditar.forEach(botao => {
 
        
         document.getElementById('editNumero').value     = colunas[0].innerText;
-        document.getElementById('editNome').value   = colunas[1].innerText;
-        document.getElementById('editData').value   = colunas[2].innerText;
-        document.getElementById('editSexo').value   = colunas[3].innerText;
-        document.getElementById('editRaca').value   = colunas[4].innerText;
-        
-        
-        document.getElementById('editStatus').value = colunas[5].innerText.trim();
+        document.getElementById('editData').value   = colunas[1].innerText;
+        document.getElementById('editStatus').value = colunas[2].innerText.trim();
 
        
         modal.style.display = 'block';
