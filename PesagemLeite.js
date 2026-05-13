@@ -25,8 +25,8 @@ function mudarPagina(pagina) {
 
 window.onload = () => mudarPagina(1);
 
-const modal = document.getElementById('modalEditarAnimais');
-const overlay = document.getElementById('overlayAnimais');
+const modal = document.getElementById('modalEditar');
+const overlay = document.getElementById('overlay');
 
 
 const botoesEditar = document.querySelectorAll('.editar');
@@ -40,10 +40,9 @@ botoesEditar.forEach(botao => {
 
        
         document.getElementById('editNumero').value     = colunas[0].innerText;
-        document.getElementById('editData').value   = colunas[1].innerText;
+        document.getElementById('editQtd').value   = colunas[1].innerText;
+        document.getElementById('editData').value   = colunas[2].innerText;
         
-        
-        document.getElementById('editStatus').value = colunas[2].innerText.trim();
 
        
         modal.style.display = 'block';
@@ -57,9 +56,8 @@ function fecharModal() {
     overlay.style.display = 'none';
 }
 
-const botoesExcluir = document.querySelectorAll('.excluir');
-botoesExcluir.forEach(botao => {
-    botao.addEventListener('click', function() {
-        alert('Excluir o animal: ' + this.closest('tr').querySelectorAll('td')[1].innerText);
-    });
-});
+function Salvar() {
+    modal.style.display = 'none';
+    overlay.style.display = 'none';
+    alert('Salvar as alterações para o animal: ' + document.getElementById('editNumero').value);
+}
