@@ -4,7 +4,7 @@ function mudarPagina(pagina) {
             const tabela = document.getElementById("tabela-animais");
             const linhas = tabela.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
             
-            // Loop para esconder/mostrar linhas
+            
             for (let i = 0; i < linhas.length; i++) {
                 const inicio = (pagina - 1) * linhasPorPagina;
                 const fim = inicio + linhasPorPagina;
@@ -16,7 +16,7 @@ function mudarPagina(pagina) {
                 }
             }
 
-            // Lógica simples para destacar o botão ativo
+            
             document.getElementById("btn1").classList.remove("ativo");
             document.getElementById("btn2").classList.remove("ativo");
             document.getElementById("btn" + pagina).classList.add("ativo");
