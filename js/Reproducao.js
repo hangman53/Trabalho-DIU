@@ -34,16 +34,11 @@ const botoesEditar = document.querySelectorAll('.editar');
 botoesEditar.forEach(botao => {
     botao.addEventListener('click', function() {
         const linha = this.closest('tr');
-        
-       
+              
         const colunas = linha.querySelectorAll('td');
 
-       
-        document.getElementById('editNumero').value     = colunas[0].innerText;
-        document.getElementById('editData').value   = colunas[1].innerText;
-        document.getElementById('editStatus').value = colunas[2].innerText.trim();
-
-       
+        document.getElementById('editStatus').value     = colunas[4].innerText;
+   
         modal.style.display = 'block';
         overlay.style.display = 'block';
     });
