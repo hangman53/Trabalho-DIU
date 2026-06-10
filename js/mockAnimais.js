@@ -29,4 +29,39 @@ function inicializarAnimaisMockados() {
     }
 }
 
+
+function inicializarAnimaisMedicadosMockados() {
+    // O IF fica aqui dentro para proteger o LocalStorage
+    if (!localStorage.getItem('listaAnimaisMedicados')) {
+        const listaAnimaisMedicados = [
+            { "id": "03", "medicamento": "Ivermectina", "data_aplicacao": "10/05/2026", "carencia": "28 dias" },
+            { "id": "17", "medicamento": "Penicilina", "data_aplicacao": "11/05/2026", "carencia": "07 dias" },
+            { "id": "05", "medicamento": "Vitamina ADE", "data_aplicacao": "12/05/2026", "carencia": "Isento" },
+            { "id": "12", "medicamento": "Febendazol", "data_aplicacao": "12/05/2026", "carencia": "14 dias" },
+            { "id": "08", "medicamento": "Enrofloxacina", "data_aplicacao": "13/05/2026", "carencia": "21 dias" },
+            { "id": "20", "medicamento": "Ocitocina", "data_aplicacao": "13/05/2026", "carencia": "Liberado" },
+            { "id": "14", "medicamento": "Dexametasona", "data_aplicacao": "14/05/2026", "carencia": "05 dias" },
+            { "id": "07", "medicamento": "Ceftiofur", "data_aplicacao": "14/05/2026", "carencia": "Isento (Leite)" },
+            { "id": "20", "medicamento": "Albendazol", "data_aplicacao": "15/05/2026", "carencia": "12 dias" },
+            { "id": "11", "medicamento": "Cloprostenol", "data_aplicacao": "15/05/2026", "carencia": "02 dias" },
+            { "id": "02", "medicamento": "Ivermectina", "data_aplicacao": "16/05/2026", "carencia": "28 dias" },
+            { "id": "02", "medicamento": "Florfenicol", "data_aplicacao": "16/05/2026", "carencia": "30 dias" },
+            { "id": "19", "medicamento": "Bupivacaína", "data_aplicacao": "17/05/2026", "carencia": "Liberado" },
+            { "id": "00", "medicamento": "Tilosina", "data_aplicacao": "17/05/2026", "carencia": "21 dias" },
+            { "id": "17", "medicamento": "Meloxicam", "data_aplicacao": "18/05/2026", "carencia": "15 dias" },
+            { "id": "06", "medicamento": "Sulfametoxazol", "data_aplicacao": "18/05/2026", "carencia": "10 dias" },
+            { "id": "13", "medicamento": "Doramectina", "data_aplicacao": "19/05/2026", "carencia": "35 dias" },
+            { "id": "09", "medicamento": "Vitamina B12", "data_aplicacao": "19/05/2026", "carencia": "Isento" },
+            { "id": "00", "medicamento": "Oxitetraciclina", "data_aplicacao": "20/05/2026", "carencia": "28 dias" },
+            { "id": "18", "medicamento": "Moxidectina", "data_aplicacao": "20/05/2026", "carencia": "28 dias" }
+        ];
+
+        localStorage.setItem('listaAnimaisMedicados', JSON.stringify(listaAnimaisMedicados));
+        console.log("🚀 Animais mockados carregados no LocalStorage com sucesso!");
+    }
+}
+
+inicializarAnimaisMedicadosMockados();
+
+
 inicializarAnimaisMockados();
