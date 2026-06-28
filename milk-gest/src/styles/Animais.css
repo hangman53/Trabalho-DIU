@@ -1,0 +1,54 @@
+
+
+/* Estilo geral para a tag de status parecer um "badge/etiqueta" */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white; /* Texto branco para contrastar com os fundos coloridos */
+}
+
+/* Cores específicas para cada status */
+.status-lactacao { background-color: #3498db; }    /* Azul */
+.status-reprodutor { background-color: #e67e22; }  /* Laranja */
+.status-prenha { background-color: #9b59b6; }      /* Roxo */
+.status-recria { background-color: #1abc9c; }      /* Verde Água */
+.status-bezerra { background-color: #e84393; }     /* Rosa */
+.status-engorda { background-color: #27ae60; }     /* Verde */
+.status-seca { background-color: #7f8c8d; }        /* Cinza */
+.status-ativo { background-color: #2ecc71; }       /* Verde Claro */
+.status-venda { background-color: #d63031; }       /* Vermelho */
+
+/* Caso apareça algum status que você esqueceu de mapear */
+.status-padrao { background-color: #34495e; }
+
+.RegistroAnimal {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+#modalEditar {
+    display: none;           
+    position: fixed;       
+    z-index: 1000;          
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); 
+    
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+    width: 400px;           
+}
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
