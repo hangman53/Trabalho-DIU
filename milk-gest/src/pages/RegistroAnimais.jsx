@@ -21,16 +21,16 @@ export default function RegistroAnimais() {
       return;
     }
 
-    // Lógica para salvar no LocalStorage (da mesma forma que o teu mock original)
+    
     const dadosStorage = localStorage.getItem("listaAnimais");
     const listaAtual = dadosStorage ? JSON.parse(dadosStorage) : [];
     
-    // Formatando a data do input (aaaa-mm-dd) para o padrão do teu mock (dd/mm/aaaa)
+    
     const  Formatada = dataNasc.split('-').reverse().join('/');
 
     const novoAnimal = {
-      id: numero.padStart(3, '0'), // Deixa o número como '001', '002' etc.
-      data: dataFormatada,
+      id: numero.padStart(3, '0'), 
+      data: Formatada,
       status: "Ativo" // Status padrão para novos animais
     };
 

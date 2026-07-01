@@ -1,1 +1,21 @@
 @import './Main.css';
+
+.sidebar-footer {
+  margin-top: auto; /* Truque do flexbox para empurrar o botão para o rodapé */
+  padding-top: 20px;
+}
+
+.botao-logout {
+  width: 100%;
+  padding: 12px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.botao-logout:hover {
+  background-color: #c9302c; /* Vermelho mais escuro no hover */
+}

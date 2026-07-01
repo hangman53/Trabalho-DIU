@@ -16,7 +16,7 @@ export default function Animais() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [animalEditando, setAnimalEditando] = useState({ id: '', data: '', status: '' });
 
-  // Equivalente ao window.onload / inicializar localStorage
+
   useEffect(() => {
     const dadosStorage = localStorage.getItem("listaAnimais");
     if (dadosStorage) {
@@ -27,7 +27,7 @@ export default function Animais() {
     }
   }, []);
 
-  // Mapeamento dinâmico de cores do seu Animais.js
+
   const obterClasseStatus = (status) => {
     const mapeamentoCores = {
       "Lactação": "status-lactacao",
@@ -51,12 +51,19 @@ export default function Animais() {
   };
 
   const excluirAnimal = (id) => {
-    alert('Excluir o animal com ID: ' + id);
-    // Para excluir de verdade na tela:
-    // setAnimais(animais.filter(a => a.id !== id));
+
+    const confirmar = window.confirm(`Tem certeza que deseja excluir o animal Nº ${id}?`);
+
+    if (confirmar) {
+
+      const listaAtualizada = animais.filter(animal => animal.id !== id);
+      setAnimais(listaAtualizada);
+      localStorage.setItem("listaAnimais", JSON.stringify(listaAtualizada));
+      alert(`Animal Nº ${id} excluído com sucesso!`);
+    }
   };
 
-  
+
 
   return (
     <>
@@ -87,7 +94,7 @@ export default function Animais() {
                 </div>
               </td>
               <td>
-                <button className="editar" onClick={() => abrirEditar(animal)}>Editar</button> 
+                <button className="editar" onClick={() => abrirEditar(animal)}>Editar</button>
                 <button className="excluir" onClick={() => excluirAnimal(animal.id)}>Excluir</button>
               </td>
             </tr>
@@ -101,26 +108,28 @@ export default function Animais() {
           <div className="overlay" style={{ display: 'block' }} onClick={() => setIsModalOpen(false)}></div>
           <div id="modalEditar" style={{ display: 'block' }}>
             <h2>Editar Registro</h2>
-            <input 
-              type="text" 
-              value={animalEditando.id} 
-              disabled 
+            <input
+              type="text"
+              value={animalEditando.id}
+              disabled
               placeholder="Número"
             />
-            <input 
-              type="text" 
-              value={animalEditando.data} 
-              onChange={(e) => setAnimalEditando({...animalEditando, data: e.target.value})} 
+            <input
+              type="text"
+              value={animalEditando.data}
+              onChange={(e) => setAnimalEditando({ ...animalEditando, data: e.target.value })}
               placeholder="Data"
             />
-            <input 
-              type="text" 
-              value={animalEditando.status} 
-              onChange={(e) => setAnimalEditando({...animalEditando, status: e.target.value})} 
+            <input
+              type="text"
+              value={animalEditando.status}
+              onChange={(e) => setAnimalEditando({ ...animalEditando, status: e.target.value })}
               placeholder="Status"
             />
-            <button id="salvar" onClick={salvarAlteracoes}>Salvar Alterações</button>
-            <button onClick={() => setIsModalOpen(false)}>Cancelar</button>
+            <section id="botoes-modal">
+              <button id="salvar" onClick={salvarAlteracoes} style={{ fontFamily: 'Roboto, sans-serif' }}>Salvar Alterações</button>
+              <button id="cancelar" onClick={() => setIsModalOpen(false)} >Cancelar</button>
+            </section>
           </div>
         </>
       )}

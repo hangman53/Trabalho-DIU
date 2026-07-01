@@ -1,26 +1,55 @@
+:root {
+  /* Cores Semânticas Claras */
+  --color-primary: #2c3e50;
+  --color-success: #27ae60; /* Cadastrar / Salvar / Ativo */
+  --color-danger: #c0392b;  /* Excluir / Perigo */
+  --color-warning: #f39c12; /* Atenção / Carencia de Medicamento */
+  --color-info: #2980b9;    /* Edição / Informação */
 
+  /* Cores dos Status */
+  --color-lactacao: #3498db;
+  --color-reprodutor: #e67e22;
+  --color-prenha: #9b59b6;
+  --color-recria: #1abc9c;
+  --color-bezerra: #e84393;
+  --color-engorda: #27ae60;
+  --color-seca: #7f8c8d;
+  --color-ativo: #2ecc71;
+  --color-venda: #d63031;
+  --color-padrao: #34495e;
+
+  /* Tipografia e Espaçamento */
+  --font-base: 'Roboto', sans-serif;
+  --font-size-base: 16px;
+  --font-size-large: 18px;
+  --border-radius: 8px;
+  --border-radius-sm: 4px;
+}
+
+/* Reset básico para o box-sizing ajudar no tamanho dos inputs */
+* {
+  box-sizing: border-box;
+}
 
 /* Estilo geral para a tag de status parecer um "badge/etiqueta" */
 .status-badge {
     padding: 4px 8px;
-    border-radius: 4px;
+    border-radius: var(--border-radius-sm);
     font-weight: bold;
-    color: white; /* Texto branco para contrastar com os fundos coloridos */
+    color: white; 
 }
 
-/* Cores específicas para cada status */
-.status-lactacao { background-color: #3498db; }    /* Azul */
-.status-reprodutor { background-color: #e67e22; }  /* Laranja */
-.status-prenha { background-color: #9b59b6; }      /* Roxo */
-.status-recria { background-color: #1abc9c; }      /* Verde Água */
-.status-bezerra { background-color: #e84393; }     /* Rosa */
-.status-engorda { background-color: #27ae60; }     /* Verde */
-.status-seca { background-color: #7f8c8d; }        /* Cinza */
-.status-ativo { background-color: #2ecc71; }       /* Verde Claro */
-.status-venda { background-color: #d63031; }       /* Vermelho */
-
-/* Caso apareça algum status que você esqueceu de mapear */
-.status-padrao { background-color: #34495e; }
+/* Cores específicas para cada status utilizando variáveis */
+.status-lactacao { background-color: var(--color-lactacao); }
+.status-reprodutor { background-color: var(--color-reprodutor); }
+.status-prenha { background-color: var(--color-prenha); }
+.status-recria { background-color: var(--color-recria); }
+.status-bezerra { background-color: var(--color-bezerra); }
+.status-engorda { background-color: var(--color-engorda); }
+.status-seca { background-color: var(--color-seca); }
+.status-ativo { background-color: var(--color-ativo); }
+.status-venda { background-color: var(--color-venda); }
+.status-padrao { background-color: var(--color-padrao); }
 
 .RegistroAnimal {
     display: flex;
@@ -29,20 +58,55 @@
 }
 
 #modalEditar {
-    display: none;           
+    display: none;          
     position: fixed;       
     z-index: 1000;          
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%); 
-    
+    font-family: var(--font-base);
     background-color: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
-    width: 400px;           
+    width: 100%;
+    max-width: 400px; /* Garante que não quebre em telas pequenas */
 }
 
+#modalEditar input, #modalEditar select {
+    margin-bottom: 20px;
+    font-family: var(--font-base);
+    width: 100%; /* Ocupa o espaço correto do modal */
+    font-size: var(--font-size-base);
+}
+
+#botoes-modal {
+    display: flex;
+    justify-content: center;
+}
+
+#salvar, #cancelar {
+    font-family: var(--font-base);
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    /* height: 80px; -> Removido por estética, o padding já resolve. Se precisar mesmo de 80px, reative a linha abaixo: */
+    /* height: 80px; */
+}
+
+#salvar {
+    background-color: var(--color-success);
+    color: white;
+    margin-right: 10px;
+}
+
+#cancelar {
+    background-color: var(--color-danger);
+    color: white;
+}
 
 .overlay {
     display: none;
@@ -51,4 +115,33 @@
     width: 100%; height: 100%;
     background: rgba(0,0,0,0.5);
     z-index: 999;
+}
+
+button.editar {
+  background-color: var(--color-info);
+  color: white;
+  padding: 10px 16px;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+}
+
+button.excluir {
+  background-color: var(--color-danger);
+  color: white;
+  padding: 10px 16px;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+}
+
+#botao-cadastro {
+  font-family: var(--font-base);
+  background-color: var(--color-success);
+  font-size: var(--font-size-large);
+  border-radius: var(--border-radius);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 }

@@ -23,12 +23,20 @@ export default function RegistroMedicacao() {
     const dataFormatada = dataAplicacao.split('-').reverse().join('/');
 
     // Estrutura pronta para salvar
-    console.log("Nova Medicação:", {
+    const novaMedicacao= {
       id: numero,
       medicamento: medicacao,
       data: dataFormatada,
       carencia: carencia
-    });
+    };
+
+    const dadosStorage = localStorage.getItem('registrosMedicacoes');
+    const listaAtual = dadosStorage ? JSON.parse(dadosStorage) : [];
+
+    listaAtual.push(novaMedicacao);
+
+
+    localStorage.setItem('registrosMedicacoes', JSON.stringify(listaAtual));
 
     alert("Medicação registrada com sucesso!");
     navigate('/medicacao'); // Redireciona de volta para a listagem de medicações

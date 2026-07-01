@@ -10,7 +10,30 @@ export default function RegistroPesagens() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ numero, qtdLeite, dataPesagem });
+    
+    // Validação simples
+    if (!numero || !dataPesagem) {
+      alert("Por favor, preencha o número do animal e a data da pesagem!");
+      return;
+    }
+
+    
+    const dadosStorage = localStorage.getItem("pesagens");
+    const listaAtual = dadosStorage ? JSON.parse(dadosStorage) : [];
+    
+    
+    const  Formatada = dataPesagem.split('-').reverse().join('/');
+
+    const novaPesagem = {
+      id: numero.padStart(3, '0'), 
+      data: Formatada,
+      qtd: qtdLeite
+    };
+
+    listaAtual.push(novaPesagem);
+    localStorage.setItem("pesagens", JSON.stringify(listaAtual));
+
+    alert("Pesagem cadastrada com sucesso!");
     navigate('/pesagem');
   };
 

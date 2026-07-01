@@ -19,7 +19,10 @@ const PESAGENS_MOCK = [
 
 export default function PesagemLeite() {
   const navigate = useNavigate();
-  const [pesagens, setPesagens] = useState(PESAGENS_MOCK);
+  const [pesagens, setPesagens] = useState(() => {
+  const dadosSalvos = localStorage.getItem('pesagens');
+  return dadosSalvos ? JSON.parse(dadosSalvos) : PESAGENS_MOCK;
+});
   const [pagina, setPagina] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pesagemEditando, setPesagemEditando] = useState({ id: '', qtd: '', data: '' });
@@ -37,6 +40,7 @@ export default function PesagemLeite() {
   const salvarAlteracoes = () => {
     const atualizadas = pesagens.map(p => p.id === pesagemEditando.id ? pesagemEditando : p);
     setPesagens(atualizadas);
+    localStorage.setItem('pesagens', JSON.stringify(atualizadas));
     setIsModalOpen(false);
     alert('Salvar as alterações para o animal: ' + pesagemEditando.id);
   };
@@ -84,20 +88,22 @@ export default function PesagemLeite() {
           <div id="modalEditar" style={{ display: 'block' }}>
             <h2>Editar Registro</h2>
             <input type="text" value={pesagemEditando.id} disabled placeholder="Número" />
-            <input 
-              type="number" 
-              value={pesagemEditando.qtd} 
-              onChange={(e) => setPesagemEditando({...pesagemEditando, qtd: e.target.value})} 
-              placeholder="Quantidade" 
+            <input
+              type="number"
+              value={pesagemEditando.qtd}
+              onChange={(e) => setPesagemEditando({ ...pesagemEditando, qtd: e.target.value })}
+              placeholder="Quantidade"
             />
-            <input 
-              type="text" 
-              value={pesagemEditando.data} 
-              onChange={(e) => setPesagemEditando({...pesagemEditando, data: e.target.value})} 
-              placeholder="Data" 
+            <input
+              type="text"
+              value={pesagemEditando.data}
+              onChange={(e) => setPesagemEditando({ ...pesagemEditando, data: e.target.value })}
+              placeholder="Data"
             />
-            <button onClick={salvarAlteracoes}>Salvar Alterações</button>
-            <button onClick={() => setIsModalOpen(false)}>Cancelar</button>
+            <section id="botoes-modal">
+              <button id="salvar" onClick={salvarAlteracoes} style={{ fontFamily: 'Roboto, sans-serif' }} >Salvar Alterações</button>
+              <button id="cancelar" onClick={() => setIsModalOpen(false)}>Cancelar</button>
+            </section>
           </div>
         </>
       )}

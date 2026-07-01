@@ -1,50 +1,78 @@
-.paginacao{
+:root {
+  /* Cores Semânticas Claras */
+  --color-primary: #2c3e50;
+  --color-success: #27ae60; /* Cadastrar / Salvar / Ativo */
+  --color-danger: #c0392b;  /* Excluir / Perigo */
+  --color-warning: #f39c12; /* Atenção / Carencia de Medicamento */
+  --color-info: #2980b9;    /* Edição / Informação */
+
+  /* Tipografia */
+  --font-size-base: 16px;
+  --font-size-large: 18px;
+  --border-radius: 8px;
+}
+
+/* --- PAGINAÇÃO --- */
+.paginacao {
     display: flex;
     justify-content: center;
+    gap: 8px; /* Substitui o margin individual por gap, que é mais moderno e limpo */
+    margin: 20px 0;
 }
 
-.paginacao button{
-    margin: 0.25rem;
+.paginacao button {
+    font-family: var(--font-base);
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-sm);
+    background-color:  #16402B;
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    transition: background-color 0.2s;
 }
 
+.paginacao button:hover {
+    background-color: #27724d;
+}
 
+/* --- STATUS (Estilo Geral Alternativo / Tabela) --- */
 .status {
+    display: inline-block;
     padding: 5px 10px;
     width: 8rem;
-    border-radius: 4px;
-    background-color: rgba(40, 167, 69, 0.5);
+    border-radius: var(--border-radius-sm);
+    /* Substituído o rgba fixo pela nossa variável de sucesso (com transparência se preferir, ou sólida) */
+    background-color: var(--color-success); 
+    color: white; /* Texto branco para contrastar bem com o fundo */
     font-weight: bold;
     text-align: center;
-    display: inline-block;
 }
 
+/* --- CONTAINER DE REGISTRO ANIMAL --- */
 .RegistroAnimal {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 1rem;
+    width: 100%;
 }
 
-#modalEditar {
-    display: none;           
-    position: fixed;       
-    z-index: 1000;          
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); 
-    
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
-    width: 400px;           
+/* Ajuste responsivo para telas pequenas */
+@media (max-width: 480px) {
+    .RegistroAnimal {
+        justify-content: center;
+    }
 }
 
-
+/* --- OVERLAY (Fundo Escurecido do Modal) --- */
 .overlay {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
+    top: 0; 
+    left: 0;
+    bottom: 0; /* Garante que grude na parte inferior */
+    right: 0;  /* Garante que grude na lateral direita */
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }

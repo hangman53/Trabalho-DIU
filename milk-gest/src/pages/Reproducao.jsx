@@ -10,9 +10,18 @@ const REPRODUCAO_MOCK = [
   { id: "105", reprodutor: "Mestre Ouro", dataInseminacao: "12/02/2026", dataParto: "22/11/2026", status: "Confirmado" }
 ];
 
+const coresStatus = {
+  "Confirmado": "#2ecc71",       // Verde
+  "Aguardando DG": "#f1c40f",    // Amarelo
+  "Vazia (Re-inseminar)": "#e74c3c" // Vermelho
+};
+
 export default function Reproducao() {
   const navigate = useNavigate();
-  const [registros, setRegistros] = useState(REPRODUCAO_MOCK);
+  const [registros, setRegistros] = useState(() => {
+    const dadosSalvos = localStorage.getItem("registrosReproducao");
+    return dadosSalvos ? JSON.parse(dadosSalvos) : REPRODUCAO_MOCK;
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [registroEditando, setRegistroEditando] = useState({ id: '', status: '' });
 
@@ -24,11 +33,20 @@ export default function Reproducao() {
   const salvarAlteracoes = () => {
     const atualizados = registros.map(r => r.id === registroEditando.id ? { ...r, status: registroEditando.status } : r);
     setRegistros(atualizados);
+    localStorage.setItem("registrosReproducao", JSON.stringify(atualizados));
     setIsModalOpen(false);
   };
 
-  const excluirRegistro = (reprodutor) => {
-    alert('Excluir o animal: ' + reprodutor);
+  const excluirRegistro = (id) => {
+    const confirmar = window.confirm(`Tem certeza que deseja excluir o registro Nº ${id}?`);
+
+    if (confirmar) {
+
+      const listaAtualizada = registros.filter(r => r.id !== id);
+      setRegistros(listaAtualizada);
+      localStorage.setItem("registrosReproducao", JSON.stringify(listaAtualizada));
+      alert(`Registro Nº ${id} excluído com sucesso!`);
+    }
   };
 
   return (
@@ -59,11 +77,23 @@ export default function Reproducao() {
               <td>{r.dataInseminacao}</td>
               <td>{r.dataParto}</td>
               <td>
-                <span className="status">{r.status}</span>
+                <span
+                  className="status"
+                  style={{
+                    backgroundColor: coresStatus[r.status] || '#ccc', // Cor padrão cinza se não achar o status
+                    color: 'white',
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    fontWeight: 'bold',
+                    display: 'inline-block'
+                  }}
+                >
+                  {r.status}
+                </span>
               </td>
               <td>
                 <button className="editar" onClick={() => abrirEditar(r)}>Editar</button>
-                <button className="excluir" onClick={() => excluirRegistro(r.reprodutor)}>Excluir</button>
+                <button className="excluir" onClick={() => excluirRegistro(r.id)}>Excluir</button>
               </td>
             </tr>
           ))}
@@ -75,14 +105,16 @@ export default function Reproducao() {
           <div className="overlay" style={{ display: 'block' }} onClick={() => setIsModalOpen(false)}></div>
           <div id="modalEditar" style={{ display: 'block' }}>
             <h2>Editar Registro</h2>
-            <input 
-              type="text" 
-              value={registroEditando.status} 
-              onChange={(e) => setRegistroEditando({...registroEditando, status: e.target.value})} 
-              placeholder="Status" 
+            <input
+              type="text"
+              value={registroEditando.status}
+              onChange={(e) => setRegistroEditando({ ...registroEditando, status: e.target.value })}
+              placeholder="Status"
             />
-            <button id="salvar" onClick={salvarAlteracoes}>Salvar Alterações</button>
-            <button onClick={() => setIsModalOpen(false)}>Cancelar</button>
+            <section id="botoes-modal">
+              <button id="salvar" onClick={salvarAlteracoes} style={{ fontFamily: 'Roboto, sans-serif' }}>Salvar Alterações</button>
+              <button id="cancelar" onClick={() => setIsModalOpen(false)} >Cancelar</button>
+            </section>
           </div>
         </>
       )}

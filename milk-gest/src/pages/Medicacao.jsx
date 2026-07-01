@@ -10,7 +10,10 @@ const MEDICACAO_MOCK = [
 
 export default function Medicacao() {
   const navigate = useNavigate();
-  const [medicacoes, setMedicacoes] = useState(MEDICACAO_MOCK);
+  const [medicacoes, setMedicacoes] = useState(() => {
+    const dadosSalvos = localStorage.getItem('registrosMedicacoes');
+    return dadosSalvos ? JSON.parse(dadosSalvos) : MEDICACAO_MOCK;
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [medEditando, setMedEditando] = useState({ id: '', medicamento: '', data: '', carencia: '' });
 
@@ -22,6 +25,7 @@ export default function Medicacao() {
   const salvarAlteracoes = () => {
     const atualizadas = medicacoes.map(m => m.id === medEditando.id ? medEditando : m);
     setMedicacoes(atualizadas);
+    localStorage.setItem('registrosMedicacoes', JSON.stringify(atualizadas));
     setIsModalOpen(false);
   };
 
@@ -65,26 +69,28 @@ export default function Medicacao() {
           <div id="modalEditar" style={{ display: 'block' }}>
             <h2>Editar Registro</h2>
             <input type="text" value={medEditando.id} disabled />
-            <input 
-              type="text" 
-              value={medEditando.medicamento} 
-              onChange={(e) => setMedEditando({...medEditando, medicamento: e.target.value})} 
-              placeholder="Medicação" 
+            <input
+              type="text"
+              value={medEditando.medicamento}
+              onChange={(e) => setMedEditando({ ...medEditando, medicamento: e.target.value })}
+              placeholder="Medicação"
             />
-            <input 
-              type="text" 
-              value={medEditando.data} 
-              onChange={(e) => setMedEditando({...medEditando, data: e.target.value})} 
-              placeholder="Data" 
+            <input
+              type="text"
+              value={medEditando.data}
+              onChange={(e) => setMedEditando({ ...medEditando, data: e.target.value })}
+              placeholder="Data"
             />
-            <input 
-              type="text" 
-              value={medEditando.carencia} 
-              onChange={(e) => setMedEditando({...medEditando, carencia: e.target.value})} 
-              placeholder="Carência" 
+            <input
+              type="text"
+              value={medEditando.carencia}
+              onChange={(e) => setMedEditando({ ...medEditando, carencia: e.target.value })}
+              placeholder="Carência"
             />
-            <button id="salvar" onClick={salvarAlteracoes}>Salvar Alterações</button>
-            <button onClick={() => setIsModalOpen(false)}>Cancelar</button>
+            <section id="botoes-modal">
+              <button id="salvar" onClick={salvarAlteracoes} style={{ fontFamily: 'Roboto, sans-serif' }}>Salvar Alterações</button>
+              <button id="cancelar" onClick={() => setIsModalOpen(false)} >Cancelar</button>
+            </section>
           </div>
         </>
       )}
