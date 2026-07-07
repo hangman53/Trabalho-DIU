@@ -53,7 +53,7 @@ export default function Reproducao() {
     <>
       <h1>Reprodução</h1>
       <section className="RegistroAnimal">
-        <button id="botao-cadastro" onClick={() => navigate('/registro-reproducao')}>
+        <button id="botao-cadastro" onClick={() => navigate('/registro-inseminacao')}>
           Cadastrar Nova Inseminação
         </button>
       </section>
