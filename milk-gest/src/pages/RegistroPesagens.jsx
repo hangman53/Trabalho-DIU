@@ -11,7 +11,7 @@ export default function RegistroPesagens() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Validação simples
+    
     if (!numero || !dataPesagem) {
       alert("Por favor, preencha o número do animal e a data da pesagem!");
       return;

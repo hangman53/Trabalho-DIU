@@ -13,8 +13,7 @@ export default function Sidebar() {
   const handleLogout = () => {
     const confirmar = window.confirm("Deseja realmente sair do sistema?");
     if (confirmar) {
-      // Se houver dados de autenticação no localStorage, remova aqui
-      // localStorage.removeItem('usuario');
+      localStorage.removeItem('usuarioLogado'); 
       navigate('/login');
     }
   };

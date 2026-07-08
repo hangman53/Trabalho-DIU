@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/RegistroMedicacao.css'; // Carrega os estilos específicos antigos
+import '../styles/RegistroMedicacao.css'; 
 
 export default function RegistroMedicacao() {
   const navigate = useNavigate();
 
-  // Estados para os campos do formulário
+  
   const [numero, setNumero] = useState('');
   const [medicacao, setMedicacao] = useState('');
   const [dataAplicacao, setDataAplicacao] = useState('');
@@ -19,10 +19,10 @@ export default function RegistroMedicacao() {
       return;
     }
 
-    // Formata a data de (aaaa-mm-dd) para (dd/mm/aaaa)
+    
     const dataFormatada = dataAplicacao.split('-').reverse().join('/');
 
-    // Estrutura pronta para salvar
+    
     const novaMedicacao= {
       id: numero,
       medicamento: medicacao,
@@ -39,7 +39,7 @@ export default function RegistroMedicacao() {
     localStorage.setItem('registrosMedicacoes', JSON.stringify(listaAtual));
 
     alert("Medicação registrada com sucesso!");
-    navigate('/medicacao'); // Redireciona de volta para a listagem de medicações
+    navigate('/medicacao'); 
   };
 
   return (

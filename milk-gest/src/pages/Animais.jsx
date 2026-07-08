@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Animais.css'; // Estilos específicos como .status-badge
 
-// Dados iniciais baseados no seu mockAnimais.js
+
 const ANIMAIS_MOCK = [
   { "id": "001", "data": "15/03/2021", "status": "Lactação" },
   { "id": "002", "data": "10/05/2020", "status": "Reprodutor" },
@@ -102,7 +102,7 @@ export default function Animais() {
         </tbody>
       </table>
 
-      {/* Renderização Condicional do Modal (Substitui o overlay/modal do CSS antigo) */}
+      
       {isModalOpen && (
         <>
           <div className="overlay" style={{ display: 'block' }} onClick={() => setIsModalOpen(false)}></div>

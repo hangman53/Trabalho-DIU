@@ -25,16 +25,15 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        {/* Rota Pública */}
         <Route path="/login" element={<Login />} />
 
-        {/* Rotas Privadas (Dentro do Layout com Menu Lateral) */}
+        
         <Route path="/" element={
           <RotaProtegida>
             <Layout />
           </RotaProtegida>
         }>
-          {/* Páginas Principais */}
+          
           <Route index element={<Home />} />
           <Route path="animais" element={<Animais />} />
           <Route path="medicacao" element={<Medicacao />} />
@@ -42,14 +41,14 @@ export default function App() {
           <Route path="pesagem" element={<PesagemLeite />} />
           <Route path="pesagem-leite" element={<PesagemLeite />} />
 
-          {/* --- CONFIGURAÇÃO DE TODAS AS ROTAS DE CADASTRO --- */}
+          
           <Route path="registro-animal" element={<RegistroAnimais />} />
           <Route path="registro-medicacao" element={<RegistroMedicacao />} />
           <Route path="registro-inseminacao" element={<RegistroInseminacao />} />
           <Route path="registro-pesagem" element={<RegistroPesagens />} />
         </Route>
 
-        {/* Captura de rotas inexistentes */}
+        
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

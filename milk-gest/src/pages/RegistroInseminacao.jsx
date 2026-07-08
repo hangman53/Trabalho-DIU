@@ -33,7 +33,7 @@ export default function RegistroInseminacao() {
       status: "Aguardando DG"
     };
 
-    // CORREÇÃO DA CHAVE: Alterado de "listaInseminacoes" para "registrosReproducao"
+   
     const dadosStorage = localStorage.getItem("registrosReproducao");
     const listaAtual = dadosStorage ? JSON.parse(dadosStorage) : [];
 

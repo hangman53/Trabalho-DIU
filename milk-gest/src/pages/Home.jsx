@@ -12,7 +12,7 @@ export default function Home() {
         Bem-vindo ao sistema de gerenciamento da sua produção leiteira.
       </p>
 
-      {/* Cartões de Acesso Rápido (Substitui o espaço em branco) */}
+      
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
         <div style={cardStyle} onClick={() => navigate('/animais')}>
           <h3>Animais</h3>

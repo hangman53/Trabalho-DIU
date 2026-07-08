@@ -20,7 +20,7 @@ export default function Login() {
   };
 
   return (
-    <div className="login-page"> {/* NOVA DIV PARA CONTROLAR O FUNDO E O ALINHAMENTO */}
+    <div className="login-page"> 
       <div className="login-container">
         <form className="login-form" onSubmit={verificarLogin}>
           <h2>Acesso ao sistema</h2>
